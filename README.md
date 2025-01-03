@@ -163,3 +163,27 @@ class YoyoBankingApp:
             amount = float(self.withdraw_entry.get())
             if amount <= 0:
                 raise ValueError("Amount must be
+                from urllib.parse import urlunparse, urlencode
+
+# Components of the URL
+scheme = 'https'
+netloc = 'api.yoyobank.com'
+path = '/transfer'
+params = ''
+query = {
+    'user_id': '12345',
+    'recipient_id': '67890',
+    'amount': '100',
+    'currency': 'USD',
+    'token': 'secure_transaction_token'
+}
+fragment = ''
+
+# Build the query string
+query_string = urlencode(query)
+
+# Create the URL
+url = urlunparse((scheme, netloc, path, params, query_string, fragment))
+
+print("Generated URL for Transfer:", url)
+
